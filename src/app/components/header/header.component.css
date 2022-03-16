@@ -1,0 +1,6 @@
+header{
+    display: flex; /**este es para q los botones y el titulo apararezcan de forma horizontal y alineados**/
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
