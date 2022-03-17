@@ -1,0 +1,9 @@
+<button 
+    class="btn" 
+    [ngStyle]="{'background-color':color}" 
+    (click)="onClick()"  
+>
+    {{text}} <!--usamos interpolacion para que mueste el boton lo que sea que escribamos en el text que esta en header.component.html y usamos [ngStyle para psarle el color que primero escribimos en header.html que luego guardamos en button.ts y ahora asi se lo pasamos a button.html para que se muestre en pantalla el color]-->
+
+</button> 
+                                                                        

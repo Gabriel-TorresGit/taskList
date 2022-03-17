@@ -1,1 +1,4 @@
-<h1>{{title}}</h1>
+<header>
+    <h1>{{title}}</h1>
+    <app-button color="green" text="agregar tarea" (btnClick)="toggleAddTask()" ></app-button> <!--quiero q el boton reciba un color y un texto entonces los pongo aca en la etiqueta.PERO para que el boton los reciba debo irme a button.ts a configurarlo-->
+</header>                                                                                       <!--tambien con (btnClick)="toggleAddTask() le hago que pueda recibir el evento que le mando desde button.ts y le digo que cuando lo reciba ejecute la funcion toggleAddTask esta funcion debo crearla en el header.ts -->
