@@ -1,0 +1,18 @@
+.task{
+    background-color: rgba(104, 95, 95, 0.335);
+    margin: 10px; /**separacion entre cada una de las tareas de la lista**/
+    padding: 10px; /**separacion entre el texto de la tarea y su borde**/
+    cursor: pointer;
+}
+
+.task.reminder{
+    border-left: 5px solid green;
+}
+
+.task h3{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+
+}

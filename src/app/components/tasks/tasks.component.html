@@ -1,0 +1,7 @@
+<!--insetamos el componente hijo app-tasks-item,luego recorremos el vector tasks creado en tasks.ts (que es el vector TASKS) y con [task] = "task" le decimos que por cada recorrido cree un item llamado [task] por cada elemento del vector osea tendra tantos item como tareas tenga el vector, y a este [task] al estar dentro de la etiqueta del componente hijo se lo estamos enviando a el pero debemos ir al hijo y hacer que pueda recibirlo -->
+
+<app-tasks-item 
+    *ngFor="let task of tasks" 
+    [task] = "task"
+>    
+</app-tasks-item>
