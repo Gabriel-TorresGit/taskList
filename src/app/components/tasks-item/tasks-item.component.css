@@ -12,7 +12,16 @@
 .task h3{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between;  /**sirve para que el titulo del h3 y el icono de la X queden alejados uno de otro si no quedan pegados **/
     
 
 }
+
+.task h3 fa-icon{
+    color: red;
+}
+
+/**vamos a meter algunos iconos desde fontawesome para ello en la terminal (no en la principal) ponemos ng add @fortawesome/angular-fontawesome@ 
+a esto hay que ir e importarlo en app.module.ts y tambien declararlos ahi mismo en el apartado imports
+pero si lo hacemos con el comando este ng add @fortawesome/angular-fontawesome@ todo eso se hace solo porque lo hacemos con el ng a la instalacion
+luego de aca hay que ir al tasks-item.ts y importar el icono de la fontawesome**/
