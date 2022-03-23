@@ -13,7 +13,7 @@ export class TasksComponent implements OnInit {
 
   tasks:Task[] = []; /**creamos un array tasks que sera del tipo array Task(este Task es la interface que sirve para controlar los tipos de datos) y le decimos que sera igual al array TASKS que ya creamos en mosk.tasks.ts ).PERO AHORA CAMBIAMOS Y SERA UN VECTOR VACIO [] PORQUE NOS ESTAMOS LLEVANDO EL MANEJO DE LA BASE DE DATOS DE LAS TAREAS AL SERVICIO TASK.SERVICE */
   
-  constructor(private taskService:TaskService) {}
+  constructor(private taskService:TaskService) {} /**aca inyectamos el servicio */
 
   ngOnInit(): void { /**lo que se pone dentro de ngOnInit se ejecuta apenas se monta la componente */
 
@@ -26,5 +26,18 @@ export class TasksComponent implements OnInit {
 
 
   }
+
+  deleteTask(task:Task){ /**la tarea q recibe se la pasaremos a la base de datos para que sea borrada y a eso lo hacemos a travez de nuestro servicio, asi que vamos para task.service */
+    this.taskService.deleteTask(task).subscribe(()=>(   /**llamo al deleteTask y le paso la task de argumento, y el subscribe(()=> es para que cuando this.taskService.deleteTask(task) finalice (para cuando ya tenga su respuesta) se ejecute lo que puse en la linea de abajo  */
+      this.tasks = this.tasks.filter( t => t.id !== task.id)  /**aca le decimos que el vector taks va a ser igual al mismo vector tasks pero con el filter le vamos a filtrar aquellas id que coincidan con el id que llego de la respuesta desde this.taskService.deleteTask(task) y asi se queda el vector tasks sin la tarea que llego por el id que seria la que se va a eliminar, las t creo que son la sintaxis de como se debe usar el filter */
+    ))
+
+  }
+
+  toggleReminder(task:Task){  /**esta sera en definitiva la funcion encargada de cambiar el valor del reminder simplemente hacemos que niegue lo que sea que trenga el reminder cuando le llega y asi lo cambi de V a F o de F a V */
+    task.reminder = !task.reminder /**AHORA IR A TASK.SERVICE.TS Y CREAR UN METODO PARA QUE LO QUE CAMBIO ACA SE VEA REFLEJADO EN LA BASE DE DATOS DEL JSON */
+    this.taskService.updateTaskReminder(task).subscribe(); /**aca llamamos al servicio taskService y asu metodo updateTaskReminder y una vez que se cambio el reminder de la tareas se la pasamos a nuestro servicio para que la actualice en la base de datos.AHORA SI VEO LA BD.JSON, CADA VEZ Q HAGA CLICK SOBRE UNA TAREA EN LA PAGINA WEB, EL REMINDER CAMBIARA */
+  }
+
 
 }

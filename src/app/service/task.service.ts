@@ -7,7 +7,13 @@ import { Injectable } from '@angular/core';
 import { Task } from '../Task';
 import { TASKS } from '../mock.tasks';
 import { Observable, of } from 'rxjs'; /**esto es para haer que el nuestro servicio sea asincronico porque ahora el nuestro es sincronico pero en la vida real son asincronicos osea no sabemos cuando va a responder */
-import { HttpClient,HttpHandler }   from '@angular/common/http' /**importamos estos porque ahora no recibe mas los datos del TASKS ahora los recibe de la base de datos que creamos con el json */
+import { HttpClient,HttpHandler, HttpHeaders }   from '@angular/common/http' /**importamos estos porque ahora no recibe mas los datos del TASKS ahora los recibe de la base de datos que creamos con el json */
+
+const httpOptions = { /** aca tengo que crear lo que le agreggue como parametro al updateTaskReminder**/
+  headers: new HttpHeaders({ /**aca decimos que los headers que mandamos en nuestra peticion son una instancia del HttpHeaders (al cual tambien debimos hacerle un import) y en la linea de abajo especificamos de que tipo es lo que mandamos*/
+    'Content-Type': 'application/json' /**con esta linea decimos que lo que estamos haciendo es  mandando es un json a nuestro servidor */
+  })
+}
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +46,15 @@ export class TaskService {
 
   }
 
+  deleteTask(task:Task): Observable<Task>{  /**aca creamos la funcion que debe ser del tipo observable */
+    const url= `${this.apiUrl}/${task.id}` /**aca agarro la url y la id de la tarea las agarro a las dos y las guardo en la variable url. Es como el video de pildoras que mandaba la id por el url */
+    return this.http.delete<Task>(url)  /**Devuelve el resultado de esa instrucción(delete) que puede ser un 404 u otro código del servicio http ese que usa. Vos con eso te estas comunicando con la base de datos json. Si cuando vos mandas el comando delete y sale bien va a volver un código 200 creó que era pero si no está ese id va a devolver otra cosa. En un futuro vos deberías capturar esos errores e informar algo */
+  }
+
+  updateTaskReminder(task:Task): Observable<Task>{ /**esta funcion es para que se vea el cambio del reminder en la base datos, recibe un task del tipo Task y es del tipo observable que va a devolver una Task  */
+    const url= `${this.apiUrl}/${task.id}`
+    return this.http.put<Task>(url,task,httpOptions) /**con la instruccion put se actualiza un elemento, le pasamos como argumento la url y una task que sera la que se va a actualizar, y el httpOptions es para informarle la backend que lo que le estamos mandando es un json en el put,tenemos que escribir este httpOptions arriba en donde estan los import(abajo de ellos) y ahora finalmente debo ir al tasks.component.ts a agregar la funcion para que ande */
+  }
 }
 
 

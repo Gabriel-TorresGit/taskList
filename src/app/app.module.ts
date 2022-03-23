@@ -9,13 +9,15 @@ import { TasksComponent } from './components/tasks/tasks.component';
 import { TasksItemComponent } from './components/tasks-item/tasks-item.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ButtonComponent,
     TasksComponent,
-    TasksItemComponent
+    TasksItemComponent,
+    
   ],
   imports: [
     BrowserModule,

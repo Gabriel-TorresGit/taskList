@@ -3,5 +3,10 @@
 <app-tasks-item 
     *ngFor="let task of tasks" 
     [task] = "task"
->    
+    (onDeleteTask)="deleteTask(task)" 
+    (onToggleReminder)="toggleReminder(task)" 
+>  
 </app-tasks-item>
+
+<!--(onDeleteTask)="deleteTask(task)" esto dice que cuando llegue el evento onDeleteTask(que lo hicimos en task-item-component-ts en la parte de output) llame a la funcion delteTask que recibe como parametro una task, a esta funcion la creamos en el ts de este componente tasks-->
+<!-- (onToggleReminder) asi le avisamos que cuando reciba el onToggleReminder debe ejecutar el toggleReminder (que recibe una tarea por parametro),ahora hay que ir al tasks.ts a crear esta funcion-->

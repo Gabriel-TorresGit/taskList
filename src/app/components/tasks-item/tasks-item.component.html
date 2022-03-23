@@ -1,8 +1,13 @@
-<div class="task">  <!--ACA HACEMOS QUE MUESTRE LOS DATOS QUE RECIBE POR LA PANTALLA, RECORDEMOS QUE RECIBE TANTOS ITEMS [TASK] DESDE EL PADRE COMO TAREAS TENGA Y SE MUESTRAN DE ELLAS LOS CAMPOS TEXT Y DAY-->
+<div  
+    class="task" 
+    [ngClass]="{reminder: task.reminder}" (click)="onToggle(task)"> <!--ACA HACEMOS QUE MUESTRE LOS DATOS QUE RECIBE POR LA PANTALLA, RECORDEMOS QUE RECIBE TANTOS ITEMS [TASK] DESDE EL PADRE COMO TAREAS TENGA Y SE MUESTRAN DE ELLAS LOS CAMPOS TEXT Y DAY. y con el ngClass le digo que muestre el color verde del borde cuando el reminder sea igual a true razona si: si reminder es true se aplica el estilo del css que tiene las eiquetas task.reminder.Por ultimo el (clik) es una de las cosas que necesito para cambiar el reminder de la tarjeta de true a false y viceversa,debo ir al tasks-item.component.ts a crear la funcion onToggle-->
+    
     <h3>
         {{task.text}} 
         <fa-icon
-            [icon]="faTimes">
+            [icon]="faTimes"
+            (click)="onDelete(task)">
+            
         </fa-icon>
     </h3>
     <p>{{task.day}} </p>
