@@ -39,5 +39,12 @@ export class TasksComponent implements OnInit {
     this.taskService.updateTaskReminder(task).subscribe(); /**aca llamamos al servicio taskService y asu metodo updateTaskReminder y una vez que se cambio el reminder de la tareas se la pasamos a nuestro servicio para que la actualice en la base de datos.AHORA SI VEO LA BD.JSON, CADA VEZ Q HAGA CLICK SOBRE UNA TAREA EN LA PAGINA WEB, EL REMINDER CAMBIARA */
   }
 
+  addTask(task:Task){ /**esta va a recibir a travez del evento una tarea, y para agregar la tarea  va a trabajar con el servicio asi que debo ir a agregar cosas en el task.service.ts porque a la tarea que recibo aca debo pasarsela a un servicio que me permita guardarla en la base de datos */
+    this.taskService.addTask(task).subscribe((task)=>( /**con taskService.addTask(task) llamamos al servicio y le pasmos la tarea, el subscribe((task) nos va a devolver la tarea (task) recien creada por el formulario, esa tarea que me devuelve el formulario se debe agregar  a la lista de tareas (tasks) que ya tenia y a eso lo hago con (task)=>this.tasks.push(task)  */
+      this.tasks.push(task)
+    ))
+    
+  }
+
 
 }

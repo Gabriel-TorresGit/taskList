@@ -1,0 +1,27 @@
+<!--este es el componente en el que haremos el formulario para agregar nuevas tareas-->
+
+<form class="add-form" (ngSubmit)="onSubmit()"> <!--la directiva (ngSbmit) se activa cuando hacemos click en el boton que tiene el type="submit"(q en mi caso es el boton de add task),ahora creamos la funcion correspondiente que se debe ejecutar cuando esto suceda, eso lo creamos en el add-task.ts-->
+
+    <div class="form-control">
+        <label for="text">Task</label>
+        <input type="text" name="text" id="text" placeholder="ad task text" [(ngModel)]="text"> <!--usamos el ngModel con los banana in box (doble binding) para que lo que escruiba en cada campo se vea reflejado en los dos lados, en el html y en el ts(como decia el de pildoras) -->
+    </div>
+
+    <div class="form-control">
+        <label for="text">Day and Time</label>
+        <input type="text" name="day" id="day" placeholder="ad dat and time" [(ngModel)]="day">
+    </div>
+
+    <div class="form-control form-control-check"> <!--el form-control-check es porque aca debemos hacer un casillero para tildar, y esto es necesario para lograrlo-->
+        <label for="text">Reminder</label>
+        <input type="checkbox" name="reminder" id="reminder" [(ngModel)]="reminder" >
+    </div>
+
+    <input type="submit" value="save task" class="btn btn-block"> <!--btn-block es para que el boton quede alargado, el color del boton y su estilo esta dado por el css global si lo quiero cambiar a su estilo lo hago en el css de esta componente t se aplicara ese estilo solo pora este boton,por ejemplo yo se lo puse verde pero si no le ponia estilos quedaria color negro-->
+
+     
+</form>
+
+<!--{{text}} si descomento esto veo lo que hace el doble binding que hice arriba con los ngModel-->
+
+<!--ahora hay q ir al add-task.ts a prepararlo para que reciba los datos que se ingresaran por este formulario-->

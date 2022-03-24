@@ -4,7 +4,7 @@
       "id": 1,
       "text": "terminar primer modulo de angular",
       "day": "agosto 5 a las 12:00",
-      "reminder": true
+      "reminder": false
     },
     {
       "id": 2,
@@ -19,10 +19,10 @@
       "reminder": true
     },
     {
-      "id": 4,
-      "text": "leer mi libro favorito",
-      "day": "agosto 3 a las 21:00",
-      "reminder": true
+      "text": "terminar la task list",
+      "day": "hoy a las cero horas",
+      "reminder": true,
+      "id": 4
     }
   ]
 }

@@ -55,6 +55,11 @@ export class TaskService {
     const url= `${this.apiUrl}/${task.id}`
     return this.http.put<Task>(url,task,httpOptions) /**con la instruccion put se actualiza un elemento, le pasamos como argumento la url y una task que sera la que se va a actualizar, y el httpOptions es para informarle la backend que lo que le estamos mandando es un json en el put,tenemos que escribir este httpOptions arriba en donde estan los import(abajo de ellos) y ahora finalmente debo ir al tasks.component.ts a agregar la funcion para que ande */
   }
+
+  addTask(task:Task): Observable<Task>{
+    return this.http.post<Task>(this.apiUrl,task,httpOptions);/**este servicio se encargara de agregar la tarea a la base de datos */
+
+  }
 }
 
 
