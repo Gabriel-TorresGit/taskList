@@ -1,4 +1,5 @@
 <header>
     <h1>{{title}}</h1>
-    <app-button color="green" text="agregar tarea" (btnClick)="toggleAddTask()" ></app-button> <!--quiero q el boton reciba un color y un texto entonces los pongo aca en la etiqueta.PERO para que el boton los reciba debo irme a button.ts a configurarlo-->
+    <app-button color= "{{showAddTask ? 'red' : 'green'}}" text="{{showAddTask ? 'close task' : 'add task'}}" (btnClick)="toggleAddTask()" ></app-button> <!--quiero q el boton reciba un color y un texto entonces los pongo aca en la etiqueta.PERO para que el boton los reciba debo irme a button.ts a configurarlo-->
 </header>                                                                                       <!--tambien con (btnClick)="toggleAddTask() le hago que pueda recibir el evento que le mando desde button.ts y le digo que cuando lo reciba ejecute la funcion toggleAddTask esta funcion debo crearla en el header.ts -->
+                                                                                                <!--ultimo cambio al color del boton y lo que dira=> caundo showAddTask sea false (osea cuando no muestre el formulario) el boton sera de color verde y dira add task y cuando la showAddTask sea true el boton sera de color rojo y dira close task-->

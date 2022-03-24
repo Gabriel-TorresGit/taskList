@@ -1,6 +1,6 @@
 <!--este es el componente en el que haremos el formulario para agregar nuevas tareas-->
 
-<form class="add-form" (ngSubmit)="onSubmit()"> <!--la directiva (ngSbmit) se activa cuando hacemos click en el boton que tiene el type="submit"(q en mi caso es el boton de add task),ahora creamos la funcion correspondiente que se debe ejecutar cuando esto suceda, eso lo creamos en el add-task.ts-->
+<form class="add-form" (ngSubmit)="onSubmit()" *ngIf="showAddTask"> <!--la directiva (ngSbmit) se activa cuando hacemos click en el boton que tiene el type="submit"(q en mi caso es el boton de add task),ahora creamos la funcion correspondiente que se debe ejecutar cuando esto suceda, eso lo creamos en el add-task.ts-->
 
     <div class="form-control">
         <label for="text">Task</label>
@@ -25,3 +25,5 @@
 <!--{{text}} si descomento esto veo lo que hace el doble binding que hice arriba con los ngModel-->
 
 <!--ahora hay q ir al add-task.ts a prepararlo para que reciba los datos que se ingresaran por este formulario-->
+
+<!--con el *ngIf="showAddTask" que pusimos en el form alla arriba le decimos que cuando showAddTask sea verdadera ahi muestre el formulario, si es flase no lo muestra. Yasi cuando le haga click al boton agregar tarea va a ocultar o mostrar el form segun corresponda-->

@@ -1,6 +1,7 @@
 import { Component, OnInit,Output,EventEmitter } from '@angular/core'; /**debo importar el output y evenemitter para poder mandar el evento del click sobre el boton (que desencadena todo lo que esta dentro de la funcion onSubmit ) hacia afuera */
 import { Task } from 'src/app/Task';
-
+import { UiService } from 'src/app/service/ui.service'; /**aca tambien import el uiservice para el boton agregar tarea */
+import { Subscription } from 'rxjs'; /**esto tambien es para el boton agregar tarea para enterarse de los eventos que ocurren en otros modulos o escucharlos como dicen otros */
 @Component({
   selector: 'app-add-task',
   templateUrl: './add-task.component.html',
@@ -13,9 +14,16 @@ export class AddTaskComponent implements OnInit {
   text:string="";  /**le decimos que va a reciir un text un day y un reminder y le ponemos que tipoo de dato trae cada uno, y lo inicializamos en string vacio a los string y al boolean en false */
   day:string="";    /**AHORA HAY Q IR AL APP.MODULE.TS A IMPORTAR EL FORMSMODULE PARA QUE ANDE EL FORMULARIO DE AGREGAR TAREAS */
   reminder:boolean=false;
+  showAddTask:boolean=false; /**aca declaramos otra vez esto con su valor(es para el boton agregar tarea ) */
+  subscription?:Subscription; /**traemos esto tambien para el boton agegar tarea para q el modulo pueda enterarse de eventos en otros modulos */
 
 
-  constructor() { }
+  constructor(private uiService:UiService ) { /**inyectamos el servicio, que lo estamos usando apra controlar el estado de  la variable del showAddTask(que tambien la hemos declarado aqui mas arriba) */
+    
+  this.subscription = this.uiService.onToggle().subscribe(value => this.showAddTask = value) /**nos traemos esta funcion del header.ts para que este modulo tambien se entere del evento de cambio de valor del showAddTask */
+                                                                                            /**SOLO FALTA IR AL ADD-TASK.COMPONENT.HTML Y AGREGAR UN ngIf PARA QUE FUNCIONE LO DE MOSTRAR EL FORM AL HACER CLICK EN EL BOTON */
+
+  }
 
   ngOnInit(): void {
   }
