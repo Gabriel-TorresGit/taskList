@@ -1,6 +1,7 @@
 # TaskList
 
-Esta es una lista de tareas que te permite agregar tareas pendientes y ponerles un recordatorio, tambien puedes eliminarlas de la lista una vez las completaste. Utilizé un JSON para simular una base de datos 
+Esta es una lista de tareas que te permite agregar tareas pendientes y ponerles un recordatorio, tambien puedes eliminarlas de la lista una vez las completaste. Utilizé un JSON para simular una base de datos.
+Puedes ver la parte de la interfaz aqui [https://gabriel-torresgit.github.io/taskList/](https://gabriel-torresgit.github.io/taskList/) Se puede ver el comportamiento de los botones pero no se podrá agregar tareas ya que por acá no se puede iniciar el server del JSON para que se se muestren las modificaciones cuando se agrega una tarea
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.2.
 
